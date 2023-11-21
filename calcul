@@ -1,0 +1,41 @@
+
+   Nr Mois |  ROI moyen |  Annualise |    ROI min |   Date min |    ROI max |   Date max
+        12 |     12.47% |     12.47% |    -50.10% | 2008/03/05 |     90.76% | 1997/04/11
+        24 |     24.06% |     11.38% |    -36.64% | 2007/03/09 |    158.81% | 1996/06/27
+        36 |     33.38% |     10.08% |    -24.67% | 2008/10/03 |    129.65% | 1996/06/03
+        48 |     45.24% |      9.78% |    -23.64% | 2005/03/09 |    127.74% | 2000/03/10
+        60 |     59.26% |      9.75% |    -26.81% | 2004/03/09 |    168.61% | 2009/03/09
+       120 |    148.70% |      9.54% |     -5.21% | 1999/03/08 |    347.29% | 2012/04/10
+
+(ROI min):
+   C'est le bottom (le plus bas) sur la tranche de mois séléctionné.
+   Cela peut être basé sur des scénarios conservateurs qui prennent en compte divers facteurs de risque, des performances
+   passées médiocres, ou des conditions de marché défavorables. Cela sert de seuil de base pour déterminer si un investissement
+   vaut la peine d'être réalisé en tenant compte du pire scénario envisageable.
+Calculer le ROI minimum:
+
+ROI moyen:
+   C'est la moyenne sur la tranche de mois séléctionné
+   C'est le retour moyen qu'un investissement est susceptible de générer, basé sur les performances historiques
+   ou une estimation des retours futurs. Il est calculé en faisant la moyenne des ROI sur une période donnée ou
+   sur un échantillonde différents investissements similaires.
+
+ROI maximum (ROI max):
+   C'est le top (le plus haut) sur la tranche de mois séléctionné
+   C'est le plus haut retour que les investisseurs pourraient raisonnablement espérer de
+   leur investissement. Il est souvent basé sur les meilleures performances historiques ou sur des conditions de marché
+   exceptionnellement favorables. C'est une estimation optimiste qui peut ne pas être durable sur le long terme.
+
+
+ROI annualisé:
+    C'est le taux de retour qui est ajusté pour une période d'un an, ce qui permet de comparer des investissements
+    sur différentes périodes de temps. C'est particulièrement utile pour comparer des investissements qui ont
+    des durées différentes. Le ROI annualisé est calculé en prenant en compte l'effet de composition sur
+    la période de l'investissement et il est souvent exprimé en pourcentage annuel.
+Calculer le ROI annualisé:
+
+
+
+On doit:
+
+L'user doit choisir un mois dans la tranche 12, 24, 36, 48, 60, 120
