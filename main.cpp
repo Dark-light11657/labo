@@ -7,6 +7,27 @@
 #include "calculation.h"
 
 
+std::string	fix_width(std::string str, long unsigned max)
+{
+    if (str.size() > max)
+    {
+        str.resize(max);
+        str[str.size() - 1] = '.';
+    }
+    return (str);
+}
+
+std::string	add_spaces(int n)
+{
+    std::string	str;
+
+    while (n--)
+        str.append(" ");
+    return (str);
+}
+
+
+
 int main() {
 
     bool valid = false;
@@ -46,11 +67,6 @@ int main() {
         div_array = csv_to_dividendes("..//data//" + choix_stock + "-2.csv");
         std::cout << "dividendes trouvees" << std::endl;
 
-        /* Dividendes's display for test
-        for (int i = 0; i < div_array.size();i++){
-            std::cout << div_array.at(i).to_string() << std::endl;
-        }
-        */
 
 
     } catch (std::invalid_argument &e){
@@ -59,44 +75,75 @@ int main() {
 
 
     // Selection of duration
-    valid = false;
     std::vector<int> months;
-
     do {
         std::cout << "Durees a considerer en mois ? \n";
         std::string months_durations;
         std::cin >> months_durations;
         std::istringstream sstr(months_durations);
 
-        long int month;
-
-        while(sstr >> month){
+        int month;
+        while (sstr >> month) {
             months.push_back(month);
             valid = true;
         }
-
-        // S'assure que au moins toutes les valeurs entree sont des int, si un non-int est entrer la suite ne sera pas prise en compte.
-
-    }while (!valid);
+    } while (!valid);
 
 
-
-    // Calcule des ROI et dates de la reponse
-
+    std::vector<Reponse> list_reponse;
+    Reponse reponse(0,0,0,0,"",0,"");
     for (int i = 0; i < months.size(); ++i) {
-
-        int roi_moyen = get_roi_moyen(months.at(i), array_stock, div_array);
-
-        int annualise = get_roi_annualise(months.at(i), array_stock, div_array);
-
-        int roi_min = get_roi_min(months.at(i), array_stock, div_array);
-
+        int month_nb = months.at(i);
+        double roi_moyen = get_roi_moy(months.at(i), array_stock, div_array);
+        double annualise = get_roi_annualise(months.at(i), array_stock, div_array);
+        double roi_min = get_roi_min(months.at(i), array_stock, div_array);
         std::string date_min = get_date_min(months.at(i), array_stock, div_array);
-
-        int roi_max = get_roi_max(months.at(i), array_stock, div_array);
-
+        double roi_max = get_roi_max(months.at(i), array_stock, div_array);
         std::string date_max = get_date_max(months.at(i), array_stock, div_array);
 
+        list_reponse.push_back(Reponse(month_nb, roi_moyen, annualise, roi_min, date_min, roi_max, date_max));
+
+    }
+
+
+    for (int i = 0; i < list_reponse.size(); ++i) {
+
+        std::cout << " Nr Mois    |  ROI moyen |  Annualise |    ROI min |   Date min |    ROI max |   Date max"
+                  << std::endl;
+
+        std::string rep_mois = std::to_string(list_reponse.at(i).mois);
+        std::string rep_roi_moy = std::to_string(list_reponse.at(i).roi_moyen)
+                +"%";
+        std::string rep_annualise = std::to_string(list_reponse.at(i).annualise)+"%";
+        std::string rep_roi_min = std::to_string(list_reponse.at(i).roi_min)+"%";
+        std::string rep_date_min = list_reponse.at(i).date_min;
+        std::string rep_roi_max = std::to_string(list_reponse.at(i).roi_max)+"%";
+        std::string rep_date_max = list_reponse.at(i).date_max;
+
+        std::string str;
+
+        str = fix_width(str, 12);
+
+        std::cout << "" << add_spaces(12 - std::size(rep_mois));
+        std::cout << rep_mois;
+
+        std::cout << "|" << add_spaces(12 - std::size(rep_roi_moy)) << str;
+        std::cout << rep_roi_moy;
+
+        std::cout << "|" << add_spaces(12 - std::size(rep_annualise)) << str;
+        std::cout << rep_annualise;
+
+        std::cout << "|" << add_spaces(12 - std::size(rep_roi_min)) << str;
+        std::cout << rep_roi_min;
+
+        std::cout << "|" << add_spaces(12 - std::size(rep_date_min)) << str;
+        std::cout << rep_date_min;
+
+        std::cout << "|" << add_spaces(12 - std::size(rep_roi_max)) << str;
+        std::cout << rep_roi_max;
+
+        std::cout << "|" << add_spaces(12 - std::size(rep_date_max)) << str;
+        std::cout << rep_date_max << std::endl;
     }
 
     return EXIT_SUCCESS;

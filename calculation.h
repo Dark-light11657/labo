@@ -20,17 +20,12 @@ struct Reponse{
 };
 
 
-int get_roi_moyen(int mois , std::vector<CsvArray> Stock, std::vector<Dividende> dividende);
+// Déclaration des fonctions
+double get_roi_moy(int mois, const std::vector<CsvArray>& Stock, const std::vector<Dividende>& Dividende);
+double get_roi_min(int mois, const std::vector<CsvArray>& Stock, const std::vector<Dividende>& Dividende);
+double get_roi_max(int mois, const std::vector<CsvArray>& Stock, const std::vector<Dividende>& Dividende);
+double get_roi_annualise(int mois, const std::vector<CsvArray>& Stock, const std::vector<Dividende>& Dividende);
+std::string get_date_min(int month_duration, const std::vector<CsvArray>& Stock, const std::vector<Dividende>& Dividende);
+std::string get_date_max(int month_duration, const std::vector<CsvArray>& Stock, const std::vector<Dividende>& Dividende);
 
-int get_roi_annualise(int mois , std::vector<CsvArray> Stock, std::vector<Dividende> dividende);
-
-int get_roi_min(int mois , std::vector<CsvArray> Stock, std::vector<Dividende> dividende);
-
-std::string get_date_min(int mois , std::vector<CsvArray> Stock, std::vector<Dividende> dividende);
-
-int get_roi_max (int mois , std::vector<CsvArray> Stock, std::vector<Dividende> dividende);
-
-std::string get_date_max(int mois , std::vector<CsvArray> Stock, std::vector<Dividende> dividende);
-
-
-#endif //PRG1_LABO3_CG_CALCULATION_H
+#endif // PRG1_LABO3_CG_CALCULATION_H
